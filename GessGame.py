@@ -509,8 +509,3 @@ class GessGame:
         print(self._rings)
 
 
-if __name__ == "__main__":
-    gess = GessGame()
-    gess.play_game()
-
-
