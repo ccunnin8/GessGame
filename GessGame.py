@@ -359,7 +359,8 @@ class GessGame:
             self._board.set_spaces(old_board)
             self._rings = old_rings
             return False
-        # move was valid, keep changes and return True
+        # move was valid, keep changes, toggle current player and return True
+        self.toggle_turn()
         return True
 
     @staticmethod
@@ -503,7 +504,6 @@ class GessGame:
                     print("Sorry, that move was not valid")
                 else:
                     break
-            self.toggle_turn()
 
         print(f"{self.get_game_state()}")
         print(self._rings)
