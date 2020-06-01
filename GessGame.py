@@ -361,6 +361,13 @@ class GessGame:
             return False
         # move was valid, keep changes, toggle current player and return True
         self.toggle_turn()
+
+        # check to see if other player is left with no rings
+        if len(self._rings[self._turn]) == 0:
+            if len(self._rings["player1"]) == 0:
+                self._state = "WHITE_WON"
+            else:
+                self._state = "BLACK_WON"
         return True
 
     @staticmethod
@@ -480,12 +487,6 @@ class GessGame:
         """
         while self._state == "UNFINISHED":
             self._board.print()
-            if len(self._rings[self._turn]) == 0:
-                if len(self._rings["player1"]) == 0:
-                    self._state = "WHITE_WON"
-                else:
-                    self._state = "BLACK_WON"
-                break
             # print which player turn it is
             print(f"it is {self._turn}'s turn")
             # ask player if they want to resign
@@ -495,7 +496,6 @@ class GessGame:
                 self.resign_game()
                 break
             while True:
-
                 # get start finish
                 start = input("What space would you like to move?")
                 end = input("Where would you like to move to?")
@@ -504,8 +504,6 @@ class GessGame:
                     print("Sorry, that move was not valid")
                 else:
                     break
-
         print(f"{self.get_game_state()}")
         print(self._rings)
-
 
