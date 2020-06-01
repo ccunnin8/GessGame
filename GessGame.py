@@ -32,7 +32,7 @@ class Board:
         # it's reversed which is confusing
         row1 = row3 = [x for x in range(0, 18) if x not in [0, 2, 4, 13, 15, 17]]
         row2 = [x for x in range(0, 18) if x not in [3, 5, 10, 12, 14]]
-        row4 = [3, 5, 10, 12, 14]
+        row4 = [1, 4, 7, 10, 13, 16]
         initial_rows = [row1, row2, row3, row4]
         # loop through rows and initialize empty spots to either player1 or player 2
         for index, row in enumerate(initial_rows):
