@@ -187,6 +187,12 @@ class GessGame:
         """
         return self._board
 
+    def get_turn(self):
+        """
+        :return: the current player who's turn it is
+        """
+        return self._turn
+
     def resign_game(self):
         """
         allows a player to resign from the game
@@ -336,7 +342,10 @@ class GessGame:
         :return: returns True if the move was made, False if not made
         """
         # make a copy of the current state (board and rings)
-        old_board = list(self._board.get_spaces())
+        old_board = []
+        for row in self._board.get_spaces():
+            old_board.append(list(row))
+
         old_rings = dict(self._rings)
 
         # get piece that is being move d
@@ -507,3 +516,6 @@ class GessGame:
         print(f"{self.get_game_state()}")
         print(self._rings)
 
+if __name__ == "__main__":
+    game = GessGame()
+    game.play_game()
